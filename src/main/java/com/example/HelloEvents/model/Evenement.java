@@ -14,11 +14,11 @@ public class Evenement {
     @Column(nullable = false)
     private Long idEvent;
 
-    private String nomEvenement;
+    private String eventname;
 
     private String description;
 
-    private String typeEvenement;
+    private String type;
 
     @OneToMany(mappedBy = "evenement" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Reservation> reservations;

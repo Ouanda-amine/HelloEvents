@@ -10,12 +10,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class EventDto {
 
-    private Long idevent;
+    private Long idEvent;
     private String eventname;
     private String description;
     private String type;
-    private List<Long> reservationIds;
+
 }

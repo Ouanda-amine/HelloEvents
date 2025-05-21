@@ -3,7 +3,9 @@ package com.example.HelloEvents.Services;
 import com.example.HelloEvents.Dto.ClientDto;
 import com.example.HelloEvents.Mapper.ClientMapper;
 import com.example.HelloEvents.Repository.ClientRepository;
+import com.example.HelloEvents.model.Client;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,11 +15,12 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private ClientMapper clientMapper;
 
-    public ClientService(ClientRepository clientRepository) {
+    public ClientService(ClientRepository clientRepository , ClientMapper clientMapper) {
         this.clientRepository = clientRepository;
+        this.clientMapper = clientMapper;
     }
 
-
+    @Transactional
     public ClientDto SaveClient(ClientDto clientDto){
         return clientMapper.toClientDto(clientRepository.save(clientMapper.toCliententity(clientDto)));
     }
@@ -34,16 +37,16 @@ public class ClientService {
     }
 
     public ClientDto modifierClient(Long id ,ClientDto clientDto){
-        return clientRepository.findById(id).map(client -> {
-            client.setFirstName(client.getFirstName());
-            client.setLastName(client.getLastName());
-            client.setEmail(client.getEmail());
-            client.setPassword(client.getPassword());
+        Client client= clientRepository.findById(id).get();
+            client.setFirstName(clientDto.getFirstName());
+            client.setLastName(clientDto.getLastName());
+            client.setEmail(clientDto.getEmail());
+            client.setPassword(clientDto.getPassword());
 
             return clientMapper.toClientDto(clientRepository.save(client));
 
 
-        }).orElseThrow(()-> new RuntimeException("Client not found"));
+
     }
 
     public void deleteClient(Long id){

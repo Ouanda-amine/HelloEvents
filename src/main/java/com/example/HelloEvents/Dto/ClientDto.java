@@ -14,9 +14,9 @@ import java.util.List;
 
 
 public class ClientDto {
-    private Long idclient;
-    private String firstname;
-    private String lastname;
+    private Long idClient;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
 }

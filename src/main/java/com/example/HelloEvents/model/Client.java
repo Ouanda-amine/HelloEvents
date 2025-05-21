@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Getter  @Setter
-public class Client {
+public class Client  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
