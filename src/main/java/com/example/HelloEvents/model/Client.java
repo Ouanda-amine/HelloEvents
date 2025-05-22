@@ -8,16 +8,13 @@ import java.util.List;
 
 @Entity
 @Getter  @Setter
-public class Client  {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long idClient;
+public class Client extends User {
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    public Client() {
+        this.setRole(Role.CLIENT);
+    }
+
+
 
     @OneToMany(mappedBy = "client" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Reservation> reservations;

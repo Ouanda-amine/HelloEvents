@@ -28,7 +28,7 @@ public class ResrvationService {
         var event = eventRepository.findById(reservatioDto.getEventId()).orElse(null);
 
         var res = reservationRepository.save(new Reservation(null,client,event));
-        return new ReservatioDto(res.getIdreservation(), res.getClient().getIdClient(), res.getEvenement().getIdEvent());
+        return new ReservatioDto(res.getIdreservation(), res.getClient().getId(), res.getEvenement().getIdEvent());
     }
 
     public List<ReservatioDto>  getAllReservation(){
