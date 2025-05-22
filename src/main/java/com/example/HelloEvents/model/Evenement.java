@@ -23,6 +23,9 @@ public class Evenement {
     @OneToMany(mappedBy = "evenement" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Reservation> reservations;
 
+    @ManyToOne
+    private Admin admin;
+
 
 
 
