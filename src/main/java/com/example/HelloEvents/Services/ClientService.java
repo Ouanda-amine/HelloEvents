@@ -13,7 +13,7 @@ import java.util.List;
 public class ClientService {
 
     private final ClientRepository clientRepository;
-    private ClientMapper clientMapper;
+    private final ClientMapper clientMapper;
 
     public ClientService(ClientRepository clientRepository , ClientMapper clientMapper) {
         this.clientRepository = clientRepository;
@@ -52,4 +52,5 @@ public class ClientService {
     public void deleteClient(Long id){
          clientRepository.deleteById(id);
     }
+
 }

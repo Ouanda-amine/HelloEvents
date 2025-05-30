@@ -9,8 +9,11 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring" , unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ReservationMapper {
 
-    //@Mapping(source = "idreservation", target = "idReservation")
+    @Mapping(source = "reservation.idreservation", target = "idReservation")
+    @Mapping(source = "reservation.client.id", target = "clientid")
+    @Mapping(source = "reservation.evenement.idEvent", target = "eventId")
     ReservatioDto reservationToDto(Reservation reservation);
+
     Reservation DtoToReservation(ReservatioDto dto);
 
 

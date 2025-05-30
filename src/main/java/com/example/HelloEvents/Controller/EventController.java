@@ -9,11 +9,14 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/api/v1")
+@CrossOrigin("*")
 public class EventController {
 
     public EventService eventService;
 
     @PostMapping("/addEvent")
+
     public EventDto addEvent(@RequestBody EventDto eventDto) {
         return eventService.AddEvent(eventDto);
     }

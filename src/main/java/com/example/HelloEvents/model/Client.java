@@ -14,8 +14,6 @@ public class Client extends User {
         this.setRole(Role.CLIENT);
     }
 
-
-
     @OneToMany(mappedBy = "client" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Reservation> reservations;
 
